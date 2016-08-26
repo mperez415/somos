@@ -1,0 +1,41 @@
+/* ============================================================
+  CRITICAL STYLESHEET
+
+  The following styles should be placed as an
+  inline-stylesheet inside of the '<head>' tag.
+
+  Preferably, place this before any other styles are linked.
+
+============================================================ */
+
+/* Normalize CSS reset
+===============================*/
+@import (inline) 'node_modules/normalize.css/normalize.css';
+
+/* Bootstrap grid framework
+** Globally set box-sizing to border box
+** per bootstrap-grid documentation.
+===============================*/
+* { box-sizing: border-box; }
+.container {
+  .row {
+    margin: 0; // give zero by default to fix layout issues with squarespace rows
+    &:not(.sqs-row) { // add space to sides of rows outside squarespace layouts
+      margin-left: -17px !important;
+      margin-right: -17px !important;
+    }
+  }
+}
+@import (inline) 'node_modules/bootstrap-grid/dist/grid.css';
+
+/* Animate.css framework
+===============================*/
+@import (inline) 'node_modules/animate.css/animate.css';
+
+/* Colors variables
+===============================*/
+@import (reference) 'styles/modules/helpers/_colors.less';
+
+/* Utiliy classes
+=============================== */
+@import 'styles/modules/helpers/_utility.less';

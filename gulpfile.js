@@ -33,6 +33,15 @@ gulp.task('watch', function() {
   watch('./blocks/*.block', batch(function (events, done) {
     gulp.start('blocks', done);
   }));
+
+  watch(['./pages/*.page','./pages/*.page.conf'], batch(function (events, done) {
+    gulp.start('pages', done);
+  }));
+
+  watch('./regions/*.region', batch(function (events, done) {
+    gulp.start('regions', done);
+  }));
+
 });
 
 /**
@@ -44,6 +53,32 @@ gulp.task('blocks', function() {
     .pipe(inlinesource())
     .pipe(gulp.dest('./template/blocks'));
 });
+
+/**
+ * Function to copy resources to
+ * appropriate place in template folder
+ */
+function copy(src,dest) {
+  gulp.src(src).
+    pipe(gulp.dest(dest))
+}
+
+/**
+ * Copy pages
+ * to appropriate template directory
+ */
+gulp.task('pages', function() {
+  copy(['./pages/*.page','./pages/*.page.conf'],'./template/pages/');
+});
+
+/**
+ * Copy regions
+ * to appropriate template directory
+ */
+gulp.task('regions', function() {
+  copy('./regions/*.region','./template');
+});
+
 
 /**
  * Compiles es6 code into a browserify bundle.
@@ -97,7 +132,8 @@ gulp.task('styles-crit', function() {
  * Top level styles task.
  */
 gulp.task('styles-main', function() {
-  lessify('./styles/*.less','./template/styles');
+  lessify(['./styles/*.less', '!./styles/base.less'],'./template/styles');
+  copy('./styles/base.less','./template/styles'); // copy base.less to template styles
 });
 
 /**
@@ -113,4 +149,4 @@ gulp.task('default', ['watch']);
 /**
  * Create a build task that does everything, including cache invalidation.
  */
-gulp.task('build', ['less', 'browserify', 'blocks']);
+gulp.task('build', ['less', 'browserify', 'blocks', 'pages', 'regions']);

@@ -3,3 +3,26 @@
 
   Centralized place for mixins used throughout all stylesheets
 ============================================================ */
+
+
+/* Responsive Bg Images
+** For use with images uploaded to squarespace assets folder
+==============================*/
+.cust-image-loader(@url) {
+  background-image: url('@{url}@500.jpg?=');
+  @media @small {
+    & {
+      background-image: url('@{url}@750.jpg?=');
+    }
+  }
+  @media @medium {
+    & {
+      background-image: url('@{url}@1000.jpg?=');
+    }
+  }
+  @media @large {
+    & {
+      background-image: url('@{url}@1500.jpg?=');
+    }
+  }
+}

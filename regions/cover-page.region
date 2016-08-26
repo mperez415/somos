@@ -1,0 +1,164 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+{@|apply lc-signature.block}
+
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- include inline critical css -->
+    {@|apply critical-css.block}
+
+    <!-- include system scripts, page meta, and header code injection -->
+    {squarespace-headers}
+
+  </head>
+  <body id="{squarespace.page-id}" class="cover-page {squarespace.page-classes}">
+
+    <!-- site container -->
+    <div class="site-container">
+
+      <header class="header">
+          <div class="container">
+              <div class="row">
+                  <div class="col-xs-12">
+                      <!-- logo -->
+                      <h1 class="cover-page-logo">
+                        <a href="/" class="cover-page-logo-link">
+                          <img id="logo" src="/assets/img/logo.svg?" alt="Logo">
+                        </a>
+                      </h1>
+                  </div>
+              </div>
+          </div>
+      </header>
+
+
+      <!-- cms content injection point -->
+      <main id="main-content" class="content-container" role="main" data-content-field="main-content">
+          <div class="container">
+              <div class="row">
+                  <div class="col-xs-12">
+                    <div class="content-wrapper">
+                      {squarespace.main-content}
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <!-- overlay -->
+          <div class="cover-image overlay"></div>
+          <!-- svg bg image container -->
+          <div id="shape-container" class="cover-image">
+              <svg width="100%" height="100%"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g>
+                      <clipPath id="clip-shape" clipPathUnits="objectBoundingBox">
+                        <polygon points="1 0, 1 0, 1 1, 0 1">
+                          <animate id="one" attributeType="XML"
+                                   attributeName="points"
+                                   to="0.5 0, 1 0, 1 1, 0.5 1"
+                                   dur="5s"
+                                   begin="0s"
+                                   repeatCount="1"/>
+                          <animate id="two" attributeType="XML"
+                                   attributeName="points"
+                                   from ="0.5 0, 1 0, 1 1, 0.5 1"
+                                   to="0 0, 1 0, 1 1, 1 1"
+                                   dur="5s"
+                                   begin="one.end"
+                                   repeatCount="1"/>
+                          <animate id="three" attributeType="XML"
+                                  attributeName="points"
+                                  from ="0 0, 1 0, 1 1, 1 1"
+                                  to="0 0, 0 0, 1 0, 1 1"
+                                  dur="0.00000001s"
+                                  begin="two.end"
+                                  repeatCount="1"/>
+                          <animate id="four" attributeType="XML"
+                                  attributeName="points"
+                                  from ="0 0, 0 0, 1 0, 1 1"
+                                  to="0 0.5, 0 0, 1 0, 1 0.5"
+                                  dur="5s"
+                                  begin="three.end"
+                                  repeatCount="1"/>
+                          <animate id="five" attributeType="XML"
+                                  attributeName="points"
+                                  from ="0 0.5, 0 0, 1 0, 1 0.5"
+                                  to="0 1, 0 0, 1 0, 1 0"
+                                  dur="5s"
+                                  begin="four.end"
+                                  repeatCount="1"/>
+                          <animate id="six" attributeType="XML"
+                                  attributeName="points"
+                                  from ="0 1, 0 0, 1 0, 1 0"
+                                  to="0 1, 0 1, 0 0, 1 0"
+                                  dur="0.0000001s"
+                                  begin="five.end"
+                                  repeatCount="1"/>
+                          <animate id="seven" attributeType="XML"
+                                  attributeName="points"
+                                  from ="0 1, 0 1, 0 0, 1 0"
+                                  to="0.5 1, 0 1, 0 0, 0.5 0"
+                                  dur="5s"
+                                  begin="six.end"
+                                  repeatCount="1"/>
+                          <animate id="eight" attributeType="XML"
+                                  attributeName="points"
+                                  from ="0.5 1, 0 1, 0 0, 0.5 0"
+                                  to="1 1, 0 1, 0 0, 0 0"
+                                  dur="5s"
+                                  begin="seven.end"
+                                  repeatCount="1"/>
+                          <animate id="nine" attributeType="XML"
+                                  attributeName="points"
+                                  from ="1 1, 0 1, 0 0, 0 0"
+                                  to="1 1, 1 1, 0 1, 0 0"
+                                  dur="0.000001s"
+                                  begin="eight.end"
+                                  repeatCount="1"/>
+                          <animate id="ten" attributeType="XML"
+                                  attributeName="points"
+                                  from ="1 1, 1 1, 0 1, 0 0"
+                                  to="1 0.5, 1 1, 0 1, 0 0.5"
+                                  dur="5s"
+                                  begin="nine.end"
+                                  repeatCount="1"/>
+                          <animate id="eleven" attributeType="XML"
+                                  attributeName="points"
+                                  from ="1 0.5, 1 1, 0 1, 0 0.5"
+                                  to="1 0, 1 1, 0 1, 0 1"
+                                  dur="5s"
+                                  begin="ten.end"
+                                  repeatCount="1"/>
+                          <animateTransform />
+                        </polygon>
+                      </clipPath>
+                  </g>
+                  <image id="clip-image" clip-path="url(#clip-shape)" width="100%" height="100%" xlink:href="/assets/img/cover-image-2@1500.jpg?" preserveAspectRatio="xMidYMin slice"></image>
+              </svg>
+          </div>
+      </main>
+
+
+      <!--Footer with open block field -->
+      <footer class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <squarespace:block-field id="cover-page-footer" columns="12" />
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div><!-- end site container -->
+
+    <!-- combo and minify scripts when not logged in -->
+    <squarespace:script src="site.js" combo="false" />
+    <squarespace:script src="cover-page.js" combo="false" />
+
+    <!-- other scripts, and footer code injection -->
+    {squarespace-footers}
+
+  </body>
+</html>

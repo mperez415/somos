@@ -18,7 +18,7 @@
 <body id="{squarespace.page-id}" class="cover-page {squarespace.page-classes}">
 
   <!-- site container -->
-  <div class="site-container">
+  <div class="site-container animated fadeIn">
 
     <header class="header">
       <div class="container">
@@ -43,7 +43,7 @@
 
 
     <!-- cms content injection point -->
-    <main id="main-content" class="content-container" role="main" data-content-field="main-content">
+    <main id="main-content" class="content-container animated fadeIn" role="main" data-content-field="main-content">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
@@ -61,7 +61,7 @@
           {.repeated section items}
           <li class="slide">
             <div class="cover-image fill-parent content-fill">
-              {.main-image?}<img {@|image-meta} />{.end}
+              {.main-image?}<img {@|image-meta}/>{.end}
             </div>
           </li>
           {.end}

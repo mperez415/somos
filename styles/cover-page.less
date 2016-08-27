@@ -24,9 +24,6 @@
 .text-shadow {
   text-shadow: 1px 1px fade(@black,50%);
 }
-/* ============================================================
-  Utility Classes
-============================================================ */
 .fill-parent {
   position: absolute;
   top: 0;
@@ -36,6 +33,9 @@
   width: 100%;
   height: 100%;
 }
+/* ============================================================
+  Utility Classes
+============================================================ */
 .cust-button {
   display: inline-block;
   width: auto;
@@ -64,12 +64,22 @@
 // Reset lists
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 // Header Logo size
 header.header {
   #logo {
     width: 150px;
   }
+}
+// Give link
+#give-wrapper {
+  right: 0;
+  top: 0;
+  position: absolute;
+  margin-top: 21px;
+  margin-right: 15px;
 }
 // Body
 body.cover-page {
@@ -199,14 +209,19 @@ body.cover-page {
 /* ============================================================
   Background Images
 ============================================================ */
+.slide {
+  .fill-parent;
+}
 #background-wrapper,
 .cover-image {
   z-index: @further-back;
   transform: translateZ(1px);
+  .fill-parent;
 }
 .overlay {
   z-index: @back;
   transform: translateZ(1px);
+  .fill-parent;
   .no-cssgradients & {
     background: fade(@black, 50%);
   }

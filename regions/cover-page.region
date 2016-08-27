@@ -3,85 +3,95 @@
 
 {@|apply lc-signature.block}
 
-  <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <!-- include inline critical css -->
-    {@|apply critical-css.block}
+  <!-- include inline critical css -->
+  {@|apply critical-css.block}
 
-    <!-- include system scripts, page meta, and header code injection -->
-    {squarespace-headers}
+  <!-- include system scripts, page meta, and header code injection -->
+  {squarespace-headers}
 
-  </head>
-  <body id="{squarespace.page-id}" class="cover-page {squarespace.page-classes}">
+</head>
 
-    <!-- site container -->
-    <div class="site-container">
+<body id="{squarespace.page-id}" class="cover-page {squarespace.page-classes}">
 
-      <header class="header">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xs-12">
-                      <!-- logo -->
-                      <h1 class="cover-page-logo">
+  <!-- site container -->
+  <div class="site-container">
+
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- logo -->
+            <h1 class="cover-page-logo">
                         <a href="/" class="cover-page-logo-link">
                           {website.siteTitle}
                         </a>
                       </h1>
-                  </div>
-              </div>
-          </div>
-      </header>
-
-
-      <!-- cms content injection point -->
-      <main id="main-content" class="content-container" role="main" data-content-field="main-content">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xs-12">
-                    <div class="content-wrapper">
-                      {squarespace.main-content}
-                    </div>
-                  </div>
-              </div>
-          </div>
-          <!-- overlay -->
-          <div class="overlay fill-parent"></div>
-          <ul id="background-wrapper" class="fill-parent">
-            <squarespace:query collection="cover-page-images" limit="99">
-                {.repeated section items}
-                  <li>
-                    <div class="cover-image fill-parent content-fill">
-                      {.main-image?}<img {@|image-meta} />{.end}
-                    </div>
-                  </li>
-                {.end}
-            </squarespace:query>
-          </ul>
-          </div>
-      </main>
-
-
-      <!--Footer with open block field -->
-      <footer class="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12">
-              <squarespace:block-field id="cover-page-footer" columns="12" />
+            <!-- give link -->
+            <div id="give-wrapper">
+              <a href="https://give.church/rl3e62m" target="_blank">
+                <div class="cust-button">Give</div>
+              </a>
             </div>
           </div>
         </div>
-      </footer>
+      </div>
+    </header>
 
-    </div><!-- end site container -->
 
-    <!-- combo and minify scripts when not logged in -->
-    <squarespace:script src="site.js" combo="false" />
-    <squarespace:script src="cover-page.js" combo="false" />
+    <!-- cms content injection point -->
+    <main id="main-content" class="content-container" role="main" data-content-field="main-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="content-wrapper">
+              {squarespace.main-content}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- overlay -->
+      <div class="overlay fill-parent"></div>
+      <!-- background images -->
+      <ul id="background-wrapper" class="fill-parent">
+        <squarespace:query collection="cover-page-images" limit="99">
+          {.repeated section items}
+          <li class="slide">
+            <div class="cover-image fill-parent content-fill">
+              {.main-image?}<img {@|image-meta} />{.end}
+            </div>
+          </li>
+          {.end}
+        </squarespace:query>
+      </ul>
+  </div>
+  </main>
 
-    <!-- other scripts, and footer code injection -->
-    {squarespace-footers}
 
-  </body>
+  <!--Footer with open block field -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <squarespace:block-field id="cover-page-footer" columns="12" />
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </div>
+  <!-- end site container -->
+
+  <!-- combo and minify scripts when not logged in -->
+  <squarespace:script src="site.js" combo="false" />
+  <squarespace:script src="cover-page.js" combo="false" />
+
+  <!-- other scripts, and footer code injection -->
+  {squarespace-footers}
+
+</body>
+
 </html>

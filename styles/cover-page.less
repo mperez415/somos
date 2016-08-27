@@ -73,6 +73,17 @@ ul {
   margin: 0;
   padding: 0;
 }
+// Reset link hovers
+body {
+  a, p a {
+    &:visited {
+      color: @white;
+    }
+    .no-touch &:hover, &:focus {
+      color: @accent;
+    }
+  }
+}
 // Header Logo size
 header.header {
   #logo {
@@ -180,14 +191,6 @@ body.cover-page {
     p,
     p a {
       .text-shadow;
-    }
-    a {
-      &:visited {
-        color: @white;
-      }
-      .no-touch &:hover, &:focus {
-        color: @accent;
-      }
     }
   }
   footer.footer {

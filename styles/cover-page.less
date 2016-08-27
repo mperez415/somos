@@ -53,6 +53,7 @@
   font-size: 14px;
   text-align: center;
   .drop-shadow;
+  transition: all .18s ease-in-out;
   &:focus,
   .no-touch &:hover {
     opacity: 0.8;
@@ -197,7 +198,7 @@ body.cover-page {
   *******************************************/
   span.sqs-system-button.sqs-editable-button,
   input.button.sqs-system-button.sqs-editable-button {
-    background-color: fade(@accent,60%);
+    background-color: @accent;
     color: @accent-alt;
 
   }

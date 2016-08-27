@@ -29,6 +29,14 @@
                           {website.siteTitle}
                         </a>
                       </h1>
+                      <!-- giving link -->
+                      <div class="give-wrapper">
+                        <a href="https://give.church/rl3e62m" target="_blank">
+                          <div class="cust-button">
+                            Give
+                          </div>
+                        </a>
+                      </div>
                   </div>
               </div>
           </div>

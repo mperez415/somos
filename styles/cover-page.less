@@ -33,6 +33,9 @@
   width: 100%;
   height: 100%;
 }
+.light-sans {
+  font-family: "Abel", "Helvetica-Neue", sans-serif;
+}
 /* ============================================================
   Utility Classes
 ============================================================ */
@@ -52,6 +55,7 @@
   letter-spacing: 1px;
   font-size: 14px;
   text-align: center;
+  .light-sans;
   .drop-shadow;
   transition: all .18s ease-in-out;
   font-weight: lighter;
@@ -201,6 +205,8 @@ body.cover-page {
   input.button.sqs-system-button.sqs-editable-button {
     background-color: @accent;
     color: @accent-alt;
+    .light-sans;
+    text-transform: uppercase;
 
   }
   input.button.sqs-system-button.sqs-editable-button,

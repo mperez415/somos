@@ -7,7 +7,7 @@
 /* ============================================================
   Variables
 ============================================================ */
-@accent: yellow;
+@accent: rgba(255, 253, 0, 1);
 @accent-alt: gray;
 @back: -1;
 @further-back: -2;
@@ -20,6 +20,9 @@
 // Drop shadow
 .drop-shadow {
   box-shadow: 0 0 20px 0 rgba(1,1,1,.5);
+}
+.text-shadow {
+  text-shadow: 1px 1px fade(@black,50%);
 }
 /* ============================================================
   Utility Classes
@@ -37,16 +40,18 @@
   display: inline-block;
   width: auto;
   height: auto;
-  padding: 0.8em 2.5em;
+  padding: 1em 2.5em;
   border-width: 0;
   cursor: pointer;
   outline: 0;
   background: @accent-alt;
   color: #fff;
-  font-style: italic;
   text-decoration: none;
-  text-transform: capitalize;
-  line-height: 1.2em;
+  text-transform: uppercase;
+  line-height: 1em;
+  letter-spacing: 1px;
+  font-size: 14px;
+  text-align: center;
   .drop-shadow;
   &:focus,
   .no-touch &:hover {
@@ -88,10 +93,11 @@ body.cover-page {
   h4,
   h5 {
     // Headline font
-    font-family: "Montserrat", "sans-serif";
-    font-weight: bold;
+    font-family: "bebas-neue", "sans-serif";
+    font-weight: normal;
     font-style: normal;
     text-transform: uppercase;
+    letter-spacing: 1.2px;
   }
   p {
     // paragraph font
@@ -138,6 +144,9 @@ body.cover-page {
         font-size: 2.5em;
       }
       @media @small {
+        font-size: 4em;
+      }
+      @media @medium {
         font-size: 4.5em;
       }
     }
@@ -154,7 +163,7 @@ body.cover-page {
     h5,
     p,
     p a {
-      text-shadow: 2px 2px fade(@black,50%);
+      .text-shadow;
     }
   }
   footer.footer {
@@ -176,9 +185,11 @@ body.cover-page {
   /*
   ** Button Styles
   *******************************************/
-  input.button.sqs-system-button.sqs-editable-button,
-  span.sqs-system-button.sqs-editable-button {
-    background-color: @accent;
+  span.sqs-system-button.sqs-editable-button,
+  input.button.sqs-system-button.sqs-editable-button {
+    background-color: fade(@accent,60%);
+    .text-shadow;
+
   }
   input.button.sqs-system-button.sqs-editable-button,
   span.sqs-system-button.sqs-editable-button {
@@ -196,5 +207,10 @@ body.cover-page {
 .overlay {
   z-index: @back;
   transform: translateZ(1px);
-  background-color: fade(@accent-alt,60%);
+  .no-cssgradients & {
+    background: fade(@black, 50%);
+  }
+  .cssgradients & {
+    background: linear-gradient(0deg, fade(@white,50%), fade(@black, 80%));
+  }
 }

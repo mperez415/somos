@@ -181,6 +181,14 @@ body.cover-page {
     p a {
       .text-shadow;
     }
+    a {
+      &:visited {
+        color: @white;
+      }
+      .no-touch &:hover, &:focus {
+        color: @accent;
+      }
+    }
   }
   footer.footer {
     // position footer

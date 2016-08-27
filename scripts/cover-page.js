@@ -9,6 +9,8 @@
 // jQuery
 window.jQuery = require('jquery');
 window.$ = window.jQuery; // for use in this file
+require('responsiveslides');
+
 
 /*
  ** Imports
@@ -47,6 +49,10 @@ $(document).ready(function() {
       }
   }
 
+  /*
+  ** Start background Slider
+  ****************************/
+  $("#background-wrapper").responsiveSlides();
 });
 
 /*

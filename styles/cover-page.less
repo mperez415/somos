@@ -1,52 +1,106 @@
 /* ============================================================
   COVER PAGE STYLESHEET
 ============================================================ */
-
 @import (reference) './modules/helpers/_colors.less';
 @import (reference) './modules/helpers/_layout.less';
 @import (reference) './modules/helpers/_mixins.less';
-
-// Keyframes animation for bg images
-@keyframes scaling {
-    0% {
-        transform: scale(1.0);
-    }
-    100% {
-        transform: scale(1.1);
-    }
+/* ============================================================
+  Variables
+============================================================ */
+@accent: yellow;
+@accent-alt: gray;
+@back: -1;
+@further-back: -2;
+/* ============================================================
+  Mixins
+============================================================ */
+/* Responsive Bg Images
+** For use with images uploaded to squarespace assets folder
+==============================*/
+// Drop shadow
+.drop-shadow {
+  box-shadow: 0 0 20px 0 rgba(1,1,1,.5);
 }
-
+/* ============================================================
+  Utility Classes
+============================================================ */
+.fill-parent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+.cust-button {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  padding: 0.8em 2.5em;
+  border-width: 0;
+  cursor: pointer;
+  outline: 0;
+  background: @accent-alt;
+  color: #fff;
+  font-style: italic;
+  text-decoration: none;
+  text-transform: capitalize;
+  line-height: 1.2em;
+  .drop-shadow;
+  &:focus,
+  .no-touch &:hover {
+    opacity: 0.8;
+  }
+}
+/* ============================================================
+  Main Styles
+============================================================ */
+// Reset lists
+ul {
+  list-style: none;
+}
+// Header Logo size
 header.header {
   #logo {
     width: 150px;
   }
 }
-
+// Body
 body.cover-page {
   height: 100vh;
   background-color: fade(@black,50%);
   transform: translateZ(1px); // fixes safari z index glitch
-
-  h1,h2,h3,h4,h5,p, a, p a { // Set color to white
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  p a {
+    // Set color to white
     color: @white;
   }
-
-  h1,h2,h3,h4,h5 { // Headline font
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    // Headline font
     font-family: "Montserrat", "sans-serif";
     font-weight: bold;
     font-style: normal;
     text-transform: uppercase;
   }
-
-  p { // paragraph font
+  p {
+    // paragraph font
     font-family: "Georgia", "serif";
     font-weight: normal;
   }
-
   .site-container {
     position: relative;
   }
-
   header.header {
     position: absolute;
     top: 0;
@@ -55,7 +109,6 @@ body.cover-page {
     width: 100%;
     z-index: 1;
   }
-
   #main-content {
     position: relative;
     height: 100vh; // fills up entire screen
@@ -65,7 +118,7 @@ body.cover-page {
       height: 100%; // makes container fill up so content can be vertically centered
       > .row {
         height: 100%;
-        >.col-xs-12 {
+        > .col-xs-12 {
           height: 100%;
           .content-wrapper {
             padding: 0 17px; // add extra spacing from sides
@@ -73,14 +126,14 @@ body.cover-page {
             width: 100%;
             top: 50%;
             left: 50%;
-            transform: translateX(-50%)translateY(-50%);;
+            transform: translateX(-50%)translateY(-50%);
           }
         }
       }
     }
     h1 {
       font-size: 2em;
-      margin: 0em;
+      margin: 0;
       @media @x-small {
         font-size: 2.5em;
       }
@@ -93,48 +146,17 @@ body.cover-page {
       letter-spacing: 0.3em;
       font-size: 18px;
     }
-    h1,h2,h3,h4,h5,p, a, p a {
+    a,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    p,
+    p a {
       text-shadow: 2px 2px fade(@black,50%);
     }
-
-    div.cover-image {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .overlay {
-      z-index: -1;
-      background-color: fade(@black,60%);
-    }
-
-    #shape-container {
-      background-image: url('./assets/img/cover-image-1@1500.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      z-index: -2;
-      background-position: 47%;
-      @media @small {
-        background-position: 57%;
-      }
-      @media @medium {
-        background-position: 67%;
-      }
-      @media @large {
-        background-position: 87%;
-      }
-      &, & #clip-image {
-        transition: all .18s ease-in-out;
-        // animation: scaling 8s ease-in-out infinite alternate;
-      }
-    }
-
   }
-
   footer.footer {
     // position footer
     position: absolute;
@@ -143,26 +165,36 @@ body.cover-page {
     left: 0;
     right: 0;
     background-color: fade(@black,70%);
-    p { // smaller font
+    p {
+      // smaller font
       font-size: 14px;
     }
     @media @small {
       padding-top: 17px; // add padding of child elements to fix spacing
     }
   }
-
-
   /*
   ** Button Styles
   *******************************************/
+  input.button.sqs-system-button.sqs-editable-button,
   span.sqs-system-button.sqs-editable-button {
-    background-color: fade(@maroon,70%);
+    background-color: @accent;
   }
-  input.button.sqs-system-button.sqs-editable-button {
-    background-color: @maroon;
+  input.button.sqs-system-button.sqs-editable-button,
+  span.sqs-system-button.sqs-editable-button {
+    .drop-shadow;
   }
-  span.sqs-system-button.sqs-editable-button,
-  input.button.sqs-system-button.sqs-editable-button {
-    box-shadow: 0 0 20px 0 rgba(1,1,1,.5);
-  }
+}
+/* ============================================================
+  Background Images
+============================================================ */
+#background-wrapper,
+.cover-image {
+  z-index: @further-back;
+  transform: translateZ(1px);
+}
+.overlay {
+  z-index: @back;
+  transform: translateZ(1px);
+  background-color: fade(@accent-alt,60%);
 }

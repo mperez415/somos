@@ -26,5 +26,8 @@
     "bootstrap-grid": "^2.0.1",
     "jquery": "^3.1.0",
     "normalize.css": "^4.1.1"
+  },
+  "browser": {
+    "responsiveslides": "./scripts/plugins/ResponsiveSlides.js-master/responsiveslides.js"
   }
 }

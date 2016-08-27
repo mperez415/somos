@@ -26,7 +26,7 @@
                       <!-- logo -->
                       <h1 class="cover-page-logo">
                         <a href="/" class="cover-page-logo-link">
-                          <img id="logo" src="/assets/img/logo.svg?" alt="Logo">
+                          {website.siteTitle}
                         </a>
                       </h1>
                   </div>
@@ -47,95 +47,18 @@
               </div>
           </div>
           <!-- overlay -->
-          <div class="cover-image overlay"></div>
-          <!-- svg bg image container -->
-          <div id="shape-container" class="cover-image">
-              <svg width="100%" height="100%"  version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g>
-                      <clipPath id="clip-shape" clipPathUnits="objectBoundingBox">
-                        <polygon points="1 0, 1 0, 1 1, 0 1">
-                          <animate id="one" attributeType="XML"
-                                   attributeName="points"
-                                   to="0.5 0, 1 0, 1 1, 0.5 1"
-                                   dur="5s"
-                                   begin="0s"
-                                   repeatCount="1"/>
-                          <animate id="two" attributeType="XML"
-                                   attributeName="points"
-                                   from ="0.5 0, 1 0, 1 1, 0.5 1"
-                                   to="0 0, 1 0, 1 1, 1 1"
-                                   dur="5s"
-                                   begin="one.end"
-                                   repeatCount="1"/>
-                          <animate id="three" attributeType="XML"
-                                  attributeName="points"
-                                  from ="0 0, 1 0, 1 1, 1 1"
-                                  to="0 0, 0 0, 1 0, 1 1"
-                                  dur="0.00000001s"
-                                  begin="two.end"
-                                  repeatCount="1"/>
-                          <animate id="four" attributeType="XML"
-                                  attributeName="points"
-                                  from ="0 0, 0 0, 1 0, 1 1"
-                                  to="0 0.5, 0 0, 1 0, 1 0.5"
-                                  dur="5s"
-                                  begin="three.end"
-                                  repeatCount="1"/>
-                          <animate id="five" attributeType="XML"
-                                  attributeName="points"
-                                  from ="0 0.5, 0 0, 1 0, 1 0.5"
-                                  to="0 1, 0 0, 1 0, 1 0"
-                                  dur="5s"
-                                  begin="four.end"
-                                  repeatCount="1"/>
-                          <animate id="six" attributeType="XML"
-                                  attributeName="points"
-                                  from ="0 1, 0 0, 1 0, 1 0"
-                                  to="0 1, 0 1, 0 0, 1 0"
-                                  dur="0.0000001s"
-                                  begin="five.end"
-                                  repeatCount="1"/>
-                          <animate id="seven" attributeType="XML"
-                                  attributeName="points"
-                                  from ="0 1, 0 1, 0 0, 1 0"
-                                  to="0.5 1, 0 1, 0 0, 0.5 0"
-                                  dur="5s"
-                                  begin="six.end"
-                                  repeatCount="1"/>
-                          <animate id="eight" attributeType="XML"
-                                  attributeName="points"
-                                  from ="0.5 1, 0 1, 0 0, 0.5 0"
-                                  to="1 1, 0 1, 0 0, 0 0"
-                                  dur="5s"
-                                  begin="seven.end"
-                                  repeatCount="1"/>
-                          <animate id="nine" attributeType="XML"
-                                  attributeName="points"
-                                  from ="1 1, 0 1, 0 0, 0 0"
-                                  to="1 1, 1 1, 0 1, 0 0"
-                                  dur="0.000001s"
-                                  begin="eight.end"
-                                  repeatCount="1"/>
-                          <animate id="ten" attributeType="XML"
-                                  attributeName="points"
-                                  from ="1 1, 1 1, 0 1, 0 0"
-                                  to="1 0.5, 1 1, 0 1, 0 0.5"
-                                  dur="5s"
-                                  begin="nine.end"
-                                  repeatCount="1"/>
-                          <animate id="eleven" attributeType="XML"
-                                  attributeName="points"
-                                  from ="1 0.5, 1 1, 0 1, 0 0.5"
-                                  to="1 0, 1 1, 0 1, 0 1"
-                                  dur="5s"
-                                  begin="ten.end"
-                                  repeatCount="1"/>
-                          <animateTransform />
-                        </polygon>
-                      </clipPath>
-                  </g>
-                  <image id="clip-image" clip-path="url(#clip-shape)" width="100%" height="100%" xlink:href="/assets/img/cover-image-2@1500.jpg?" preserveAspectRatio="xMidYMin slice"></image>
-              </svg>
+          <div class="overlay fill-parent"></div>
+          <ul id="background-wrapper" class="fill-parent">
+            <squarespace:query collection="cover-page-images" limit="99">
+                {.repeated section items}
+                  <li>
+                    <div class="cover-image fill-parent content-fill">
+                      {.main-image?}<img {@|image-meta} />{.end}
+                    </div>
+                  </li>
+                {.end}
+            </squarespace:query>
+          </ul>
           </div>
       </main>
 

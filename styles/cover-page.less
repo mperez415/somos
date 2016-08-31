@@ -12,6 +12,25 @@
 @back: -1;
 @further-back: -2;
 /* ============================================================
+  Load fontfaces
+============================================================ */
+@font-face {
+    font-family: 'greycliff_cfbold';
+    src: url('./assets/typeface/greycliffcf/greycliffcf-bold-webfont.woff2?') format('woff2'),
+         url('./assets/typeface/greycliffcf/greycliffcf-bold-webfont.woff?') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'greycliff_cflight';
+    src: url('./assets/typeface/greycliffcf/greycliffcf-light-webfont.woff2?') format('woff2'),
+         url('./assets/typeface/greycliffcf/greycliffcf-light-webfont.woff?') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+/* ============================================================
   Mixins
 ============================================================ */
 /* Responsive Bg Images
@@ -34,7 +53,10 @@
   height: 100%;
 }
 .light-sans {
-  font-family: "Abel", "Helvetica-Neue", sans-serif;
+  font-family: "greycliff_cflight",Arial,"sans-serif";
+}
+.heavy-sans {
+  font-family: "greycliff_cfbold",Arial,"sans-serif";
 }
 /* ============================================================
   Utility Classes
@@ -58,7 +80,7 @@
   .light-sans;
   .drop-shadow;
   transition: all .18s ease-in-out;
-  font-weight: lighter;
+  transform: translateZ(0);
   &:focus,
   .no-touch &:hover {
     opacity: 0.8;
@@ -120,15 +142,14 @@ body.cover-page {
   h4,
   h5 {
     // Headline font
-    font-family: "bebas-neue", "sans-serif";
+    .heavy-sans;
     font-weight: normal;
     font-style: normal;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
   }
   p {
     // paragraph font
-    font-family: "Georgia", "serif";
+    font-family: "Georgia", Times,"serif";
     font-weight: normal;
   }
   .site-container {

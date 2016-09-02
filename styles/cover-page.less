@@ -7,51 +7,33 @@
 /* ============================================================
   Variables
 ============================================================ */
-@accent: rgba(255, 253, 0, 1);
-@accent-alt: #616161;
-@back: -1;
-@further-back: -2;
+@accent: rgba(255, 242, 0, 1);
+@accent-alt: rgba(16,6,150,1);
+@brand-black: rgba(45,41,38,1);
+@send-back: -1;
+@send-further-back: -2;
+@send-to-back: -3;
 /* ============================================================
   Load fontfaces
 ============================================================ */
 @font-face {
-    font-family: 'greycliff_cfbold';
-    src: url('./assets/typeface/greycliffcf/greycliffcf-bold-webfont.woff2?') format('woff2'),
-         url('./assets/typeface/greycliffcf/greycliffcf-bold-webfont.woff?') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'greycliff_cfbold';
+  src: url('./assets/typeface/greycliffcf/greycliffcf-bold-webfont.woff2?') format('woff2'), url('./assets/typeface/greycliffcf/greycliffcf-bold-webfont.woff?') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'greycliff_cflight';
-    src: url('./assets/typeface/greycliffcf/greycliffcf-light-webfont.woff2?') format('woff2'),
-         url('./assets/typeface/greycliffcf/greycliffcf-light-webfont.woff?') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'greycliff_cflight';
+  src: url('./assets/typeface/greycliffcf/greycliffcf-light-webfont.woff2?') format('woff2'), url('./assets/typeface/greycliffcf/greycliffcf-light-webfont.woff?') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 /* ============================================================
   Mixins
 ============================================================ */
-/* Responsive Bg Images
-** For use with images uploaded to squarespace assets folder
+/*
+** Fonts
 ==============================*/
-// Drop shadow
-.drop-shadow {
-  box-shadow: 0 0 20px 0 rgba(1,1,1,.5);
-}
-.text-shadow {
-  text-shadow: 1px 1px fade(@black,50%);
-}
-.fill-parent {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-}
 .light-sans {
   font-family: "greycliff_cflight",Arial,"sans-serif";
 }
@@ -69,7 +51,7 @@
   border-width: 0;
   cursor: pointer;
   outline: 0;
-  background: @accent-alt;
+  background: @brand-black;
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
@@ -79,7 +61,7 @@
   text-align: center;
   .light-sans;
   .drop-shadow;
-  transition: all .18s ease-in-out;
+  transition: all 0.18s ease-in-out;
   transform: translateZ(0);
   &:focus,
   .no-touch &:hover {
@@ -97,19 +79,34 @@ ul {
 }
 // Reset link hovers
 body {
-  a, p a {
+  a,
+  p a {
     &:visited {
       color: @white;
     }
-    .no-touch &:hover, &:focus {
+    &:focus,
+    .no-touch &:hover {
       color: @accent;
     }
   }
 }
 // Header Logo size
 header.header {
-  #logo {
+  .logo-wrapper {
+    // size logo down
     width: 150px;
+    // setup link to logo src
+    #logo {
+      // give div same aspect ratio as logo src
+      .aspect-ratio(460,200);
+      /* Make sure background doesn't repeat */
+      background-repeat: no-repeat;
+      /* Make sure background covers */
+      background-size: cover;
+      .svg & {
+        background-image: url('/assets/img/Logo_Somos_web.svg?v=');
+      }
+    }
   }
 }
 // Give link
@@ -123,7 +120,7 @@ header.header {
 // Body
 body.cover-page {
   height: 100vh;
-  background-color: fade(@black,50%);
+  background-color: fade(@brand-black,50%);
   transform: translateZ(1px); // fixes safari z index glitch
   a,
   h1,
@@ -194,9 +191,6 @@ body.cover-page {
       @media @small {
         font-size: 4em;
       }
-      @media @medium {
-        font-size: 4.5em;
-      }
     }
     p {
       text-transform: uppercase;
@@ -233,17 +227,17 @@ body.cover-page {
   /*
   ** Button Styles
   *******************************************/
-  span.sqs-system-button.sqs-editable-button,
-  input.button.sqs-system-button.sqs-editable-button {
+  input.button.sqs-system-button.sqs-editable-button,
+  span.sqs-system-button.sqs-editable-button {
     background-color: @accent;
-    color: @accent-alt;
+    color: @brand-black;
     .light-sans;
     text-transform: uppercase;
     .drop-shadow;
-    .no-touch &:hover, &:focus {
-      opacity: .8;
+    &:focus,
+    .no-touch &:hover {
+      opacity: 0.8;
     }
-
   }
 }
 /* ============================================================
@@ -254,18 +248,32 @@ body.cover-page {
 }
 #background-wrapper,
 .cover-image {
-  z-index: @further-back;
-  transform: translateZ(1px);
+  z-index: @send-to-back;
+  transform: translate3d(0,0,0);
   .fill-parent;
 }
 .overlay {
-  z-index: @back;
-  transform: translateZ(1px);
+  z-index: @send-back;
+  transform: translate3d(0,0,0);
   .fill-parent;
   .no-cssgradients & {
-    background: fade(@black, 50%);
+    background: fade(@brand-black, 50%);
   }
   .cssgradients & {
-    background: linear-gradient(0deg, fade(@white,25%), fade(@black, 85%));
+    background: linear-gradient(0deg, fade(@white,20%), fade(@brand-black, 90%));
+  }
+}
+/* ============================================================
+  Plus Swatch
+============================================================ */
+.plus-swatch {
+  opacity: .15;
+  .fill-parent;
+  background-size: 300px;
+  background-repeat: repeat-x repeat-y;
+  z-index: @send-further-back;
+  transform: translate3d(0,0,0);
+  .svg & {
+    background-image: url('/assets/img/plus_swatch.svg?v=');
   }
 }

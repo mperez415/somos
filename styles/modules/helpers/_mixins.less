@@ -3,8 +3,6 @@
 
   Centralized place for mixins used throughout all stylesheets
 ============================================================ */
-
-
 /* Responsive Bg Images
 ** For use with images uploaded to squarespace assets folder
 ==============================*/
@@ -23,6 +21,57 @@
   @media @large {
     & {
       background-image: url('@{url}@1500.jpg?=');
+    }
+  }
+}
+/*
+** Global Shadows
+==============================*/
+// Drop shadow
+.drop-shadow {
+  box-shadow: 0 0 20px 0 rgba(1,1,1,.5);
+}
+// text-shadows for light colors
+.text-shadow {
+  text-shadow: 1px 1px fade(@black,50%);
+}
+/*
+** Positioning
+==============================*/
+// fill space of a relatively positioned parent
+.fill-parent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Aspect Ratio Calculation:
+** @See: https://css-tricks.com/snippets/sass/maintain-aspect-ratio-mixin
+==============================*/
+.aspect-ratio(@width, @height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-bottom: (@height / @width) * 100%;
+    box-sizing: content-box; // override border-box box-sizing
+  }
+  > .content {
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    span:before {
+      content: "@{width}";
+    }
+    span:after {
+      content: "@{height}";
     }
   }
 }

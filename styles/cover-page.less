@@ -7,12 +7,23 @@
 /* ============================================================
   Variables
 ============================================================ */
-@accent: rgba(255, 242, 0, 1);
-@accent-alt: rgba(16,6,150,1);
-@brand-black: rgba(45,41,38,1);
+/* z index */
 @send-back: -1;
 @send-further-back: -2;
 @send-to-back: -3;
+/* dimensions */
+// Logo
+@logo-width: 90px;
+@logo-height: 39px;
+@logo-width-sm: 150px;
+@logo-height-sm: 65px;
+@logo-padding: 17px;
+// Header
+@header-lineheight: @logo-height + 2 * @logo-padding; // equals logo height + 2 * logo padding
+@header-lineheight-sm: @logo-height-sm + 2 * @logo-padding;
+// Footer
+@footer-height: 82px;
+@footer-height-xs: 66px;
 /* ============================================================
   Load fontfaces
 ============================================================ */
@@ -37,6 +48,7 @@
 .light-sans {
   font-family: "greycliff_cflight",Arial,"sans-serif";
 }
+
 .heavy-sans {
   font-family: "greycliff_cfbold",Arial,"sans-serif";
 }
@@ -63,6 +75,7 @@
   .drop-shadow;
   transition: all 0.18s ease-in-out;
   transform: translateZ(0);
+
   &:focus,
   .no-touch &:hover {
     opacity: 0.8;
@@ -70,61 +83,22 @@
 }
 /* ============================================================
   Main Styles
+
+  All styles wrapped in cover-page class
 ============================================================ */
-// Reset lists
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-// Reset link hovers
-body {
-  a,
-  p a {
-    &:visited {
-      color: @white;
-    }
-    &:focus,
-    .no-touch &:hover {
-      color: @accent;
-    }
-  }
-}
-// Header Logo size
-header.header {
-  .logo-wrapper {
-    // size logo down
-    width: 150px;
-    // setup link to logo src
-    #logo {
-      // give div same aspect ratio as logo src
-      .aspect-ratio(460,200);
-      /* Make sure background doesn't repeat */
-      background-repeat: no-repeat;
-      /* Make sure background covers */
-      background-size: cover;
-      .svg & {
-        background-image: url('/assets/img/Logo_Somos_web.svg?v=');
-      }
-      .no-svg & {
-        background-image: url('/assets/img/Logo_Somos_web.png?v=');
-      }
-    }
-  }
-}
-// Give link
-#give-wrapper {
-  right: 0;
-  top: 0;
-  position: absolute;
-  margin-top: 21px;
-  margin-right: 15px;
-}
-// Body
 body.cover-page {
-  height: 100vh;
+  // Reset lists
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Reset body styles
+  height: 100vh; // set height to 100% of viewport height
   background-color: fade(@brand-black,50%);
   transform: translateZ(1px); // fixes safari z index glitch
+
   a,
   h1,
   h2,
@@ -136,6 +110,7 @@ body.cover-page {
     // Set color to white
     color: @white;
   }
+
   h1,
   h2,
   h3,
@@ -147,14 +122,33 @@ body.cover-page {
     font-style: normal;
     text-transform: uppercase;
   }
+
   p {
     // paragraph font
     font-family: "Georgia", Times,"serif";
     font-weight: normal;
   }
+
+  a,
+  p a {
+    text-decoration: none;
+    // Set link hovers
+
+    &:visited {
+      color: @white;
+    }
+
+    &:focus,
+    .no-touch &:hover {
+      color: @accent;
+      text-decoration: underline;
+    }
+  }
+  // This makes everything position relative to site container
   .site-container {
     position: relative;
   }
+  // Header & Navigation
   header.header {
     position: absolute;
     top: 0;
@@ -162,18 +156,96 @@ body.cover-page {
     right: 0;
     width: 100%;
     z-index: 1;
+
+    .left {
+      width: @logo-width;
+      @media @x-small {
+        width: @logo-width-sm;
+      }
+    }
+
+    .right {
+      width: 100%;
+      text-align: right;
+    }
+
+    .left,
+    .right {
+      /* Use display table cell to expand right to
+    ** available width. Requires that both left and right
+    ** have a declared width. Left will have a static width
+    ** in pixels, while right will have 100% width.
+    ** See: https://www.sitepoint.com/community/t/floated-fixed-width-sidebar-with-fluid-width-previous-sibling/79778/4
+    ********************************************************* */
+      display: table-cell;
+      line-height: @header-lineheight;
+      @media @x-small {
+        line-height: @header-lineheight-sm;
+      }
+    }
+
+    a.cover-page-logo-wrapper {
+      display: inline-block; // Make anchor expand to it's contents
+      vertical-align: middle; // Vertical align it to other text
+      padding: @logo-padding 0;
+      // setup link to logo src
+      .cover-page-logo {
+        // give div same aspect ratio as logo src
+        .aspect-ratio(@logo-width,@logo-height);
+        /* Make sure background doesn't repeat */
+        background-repeat: no-repeat;
+        /* Make sure background covers */
+        background-size: cover;
+
+        .svg & {
+          background-image: url('/assets/img/Logo_Somos_web.svg?v=');
+        }
+
+        .no-svg & {
+          background-image: url('/assets/img/Logo_Somos_web.png?v=');
+        }
+        // Specify Logo size
+        width: @logo-width;
+        height: @logo-height;
+        @media @x-small {
+          width: @logo-width-sm;
+          height: @logo-height-sm;
+        }
+      }
+      /* Site title is hidden. Included for accessibility
+      ============================================ */
+      #siteTitle {
+        // hide this text
+        font-size: 1.4em;
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
   }
+  // Main Content
   #main-content {
     position: relative;
     height: 100vh; // fills up entire screen
-    min-height: 500px; // min-height for smaller screens
+    min-height: 585px; // min-height for smaller screens
+    @media @small {
+      min-height: 625px;
+    }
     overflow-y: hidden; // fixes mysterious space at bottom
+    margin-bottom: -@footer-height; // creates sticky footer effect
+    @media @x-small {
+      margin-bottom: -@footer-height-xs;
+    }
+
     > .container {
       height: 100%; // makes container fill up so content can be vertically centered
+
       > .row {
         height: 100%;
+
         > .col-xs-12 {
           height: 100%;
+
           .content-wrapper {
             padding: 0 17px; // add extra spacing from sides
             position: absolute;
@@ -185,6 +257,7 @@ body.cover-page {
         }
       }
     }
+
     h1 {
       font-size: 2em;
       margin: 0;
@@ -198,11 +271,13 @@ body.cover-page {
         font-size: 3.5em;
       }
     }
+
     p {
       text-transform: uppercase;
       letter-spacing: 0.3em;
       font-size: 18px;
     }
+
     a,
     h1,
     h2,
@@ -214,25 +289,31 @@ body.cover-page {
       .text-shadow;
     }
   }
+  // Sticky footer
+  .push,
   footer.footer {
-    // position footer
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    height: @footer-height;
+    @media @x-small {
+      height: @footer-height-xs;
+    }
+  }
+  // Footer
+  footer.footer {
+    position: relative;
     background-color: fade(@black,70%);
+
     p {
+      .light-sans;
       // smaller font
       font-size: 14px;
     }
-    @media @small {
+    @media @x-small {
       padding-top: 17px; // add padding of child elements to fix spacing
     }
   }
   /*
-  ** Button Styles
-  *******************************************/
+    ** Button Styles
+    *******************************************/
   input.button.sqs-system-button.sqs-editable-button,
   span.sqs-system-button.sqs-editable-button {
     background-color: @accent;
@@ -240,49 +321,56 @@ body.cover-page {
     .light-sans;
     text-transform: uppercase;
     .drop-shadow;
+
     &:focus,
     .no-touch &:hover {
       opacity: 0.8;
     }
   }
-}
-/* ============================================================
-  Background Images
-============================================================ */
-.slide {
-  .fill-parent;
-}
-#background-wrapper,
-.cover-image {
-  z-index: @send-to-back;
-  transform: translate3d(0,0,0);
-  .fill-parent;
-}
-.overlay {
-  z-index: @send-back;
-  transform: translate3d(0,0,0);
-  .fill-parent;
-  .no-cssgradients & {
-    background: fade(@brand-black, 50%);
+  /* ============================================================
+      Background Images
+    ============================================================ */
+  .slide {
+    .fill-parent;
   }
-  .cssgradients & {
-    background: linear-gradient(0deg, fade(@white,20%), fade(@brand-black, 90%));
+
+  #background-wrapper,
+  .cover-image {
+    z-index: @send-to-back;
+    transform: translate3d(0,0,0);
+    .fill-parent;
   }
-}
-/* ============================================================
-  Plus Swatch
-============================================================ */
-.plus-swatch {
-  opacity: .15;
-  .fill-parent;
-  background-size: 300px;
-  background-repeat: repeat-x repeat-y;
-  z-index: @send-further-back;
-  transform: translate3d(0,0,0);
-  .svg & {
-    background-image: url('/assets/img/plus_swatch.svg?v=');
+
+  .overlay {
+    z-index: @send-back;
+    transform: translate3d(0,0,0);
+    .fill-parent;
+
+    .no-cssgradients & {
+      background: fade(@brand-black, 50%);
+    }
+
+    .cssgradients & {
+      background: linear-gradient(0deg, fade(@white,20%), fade(@brand-black, 90%));
+    }
   }
-  .no-svg & {
-    background-image: url('/assets/img/plus_swatch.png?v=');
+  /* ============================================================
+      Plus Swatch
+    ============================================================ */
+  .plus-swatch {
+    opacity: 0.15;
+    .fill-parent;
+    background-size: 300px;
+    background-repeat: repeat-x repeat-y;
+    z-index: @send-further-back;
+    transform: translate3d(0,0,0);
+
+    .svg & {
+      background-image: url('/assets/img/plus_swatch.svg?v=');
+    }
+
+    .no-svg & {
+      background-image: url('/assets/img/plus_swatch.png?v=');
+    }
   }
 }

@@ -22,18 +22,28 @@
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
-            <!-- logo -->
-            <h1 class="cover-page-logo">
-                        <a href="/" class="cover-page-logo-link">
-                          {website.siteTitle}
-                        </a>
-                      </h1>
-            <!-- give link -->
-            <div id="give-wrapper">
-              <a href="https://give.church/rl3e62m" target="_blank">
-                <div class="cust-button">Give</div>
-              </a>
-            </div>
+            <nav id="cover-page-nav">
+              <!-- left side of nav -->
+              <div class="left">
+                <!-- logo -->
+                <a href="/"data-content-field="site-title" class="cover-page-logo-wrapper">
+                  <div id="siteTitle" class="cover-page-logo">
+                    {website.siteTitle}
+                  </div>
+                </a>
+              </div>
+              <!-- end left side of nav -->
+              <!-- right side of nav -->
+              <div class="right">
+                <!-- give link -->
+                <div id="give-wrapper">
+                  <a href="https://give.church/rl3e62m" target="_blank">
+                    <div class="cust-button">Give</div>
+                  </a>
+                </div>
+              </div>
+              <!-- end right side of nav -->
+            </nav>
           </div>
         </div>
       </div>
@@ -53,6 +63,8 @@
       </div>
       <!-- overlay -->
       <div class="overlay fill-parent"></div>
+      <!-- plus swatch pattern -->
+      <div class="plus-swatch"></div>
       <!-- background images -->
       <ul id="background-wrapper" class="fill-parent">
         <squarespace:query collection="cover-page-images" limit="99">
@@ -65,7 +77,8 @@
           {.end}
         </squarespace:query>
       </ul>
-  </div>
+      <!-- push div for sticky footer effect -->
+      <div class="push"></div>
   </main>
 
 

@@ -59,17 +59,27 @@
   display: inline-block;
   width: auto;
   height: auto;
-  padding: 1em 2.5em;
+  padding: .8em 2em;
   border-width: 0;
   cursor: pointer;
   outline: 0;
   background: @brand-black;
+  &.cta {
+    background: @accent;
+    color: @brand-black;
+    text-shadow: none !important;
+    &:hover,
+    &:focus {
+      color: @brand-black !important;
+      text-decoration: none !important;
+    }
+  }
   color: #fff;
   text-decoration: none;
   text-transform: uppercase;
   line-height: 1em;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   .light-sans;
   .drop-shadow;
@@ -79,6 +89,11 @@
   &:focus,
   .no-touch &:hover {
     opacity: 0.8;
+  }
+
+  @media @small {
+    padding: 1em 2.5em;
+    font-size: 14px;
   }
 }
 /* ============================================================
@@ -125,7 +140,7 @@ body.cover-page {
 
   p {
     // paragraph font
-    font-family: "Georgia", Times,"serif";
+    .light-sans;
     font-weight: normal;
   }
 
@@ -167,6 +182,9 @@ body.cover-page {
     .right {
       width: 100%;
       text-align: right;
+      .nav-button {
+        display: inline-block;
+      }
     }
 
     .left,
@@ -227,10 +245,7 @@ body.cover-page {
   #main-content {
     position: relative;
     height: 100vh; // fills up entire screen
-    min-height: 585px; // min-height for smaller screens
-    @media @small {
-      min-height: 625px;
-    }
+    min-height: 575px; // min-height for smaller screens
     overflow-y: hidden; // fixes mysterious space at bottom
     margin-bottom: -@footer-height; // creates sticky footer effect
     @media @x-small {
@@ -265,7 +280,7 @@ body.cover-page {
         font-size: 2.5em;
       }
       @media @small {
-        font-size: 4em;
+        font-size: 3em;
       }
       @media @medium {
         font-size: 3.5em;
@@ -276,6 +291,7 @@ body.cover-page {
       text-transform: uppercase;
       letter-spacing: 0.3em;
       font-size: 18px;
+
     }
 
     a,
@@ -303,7 +319,6 @@ body.cover-page {
     background-color: fade(@black,70%);
 
     p {
-      .light-sans;
       // smaller font
       font-size: 14px;
     }
@@ -314,19 +329,19 @@ body.cover-page {
   /*
     ** Button Styles
     *******************************************/
-  input.button.sqs-system-button.sqs-editable-button,
-  span.sqs-system-button.sqs-editable-button {
-    background-color: @accent;
-    color: @brand-black;
-    .light-sans;
-    text-transform: uppercase;
-    .drop-shadow;
-
-    &:focus,
-    .no-touch &:hover {
-      opacity: 0.8;
-    }
-  }
+  // input.button.sqs-system-button.sqs-editable-button,
+  // span.sqs-system-button.sqs-editable-button {
+  //   background-color: @accent;
+  //   color: @brand-black;
+  //   .light-sans;
+  //   text-transform: uppercase;
+  //   .drop-shadow;
+  //
+  //   &:focus,
+  //   .no-touch &:hover {
+  //     opacity: 0.8;
+  //   }
+  // }
   /* ============================================================
       Background Images
     ============================================================ */
@@ -371,6 +386,17 @@ body.cover-page {
 
     .no-svg & {
       background-image: url('/assets/img/plus_swatch.png?v=');
+    }
+  }
+
+  // Wistia popover button
+  .wistia_click_to_play {
+    a {
+      .light-sans;
+      text-transform: uppercase;
+      #popover-link {
+        opacity: 0;
+      }
     }
   }
 }

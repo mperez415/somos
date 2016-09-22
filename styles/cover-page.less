@@ -245,7 +245,7 @@ body.cover-page {
   #main-content {
     position: relative;
     height: 100vh; // fills up entire screen
-    min-height: 575px; // min-height for smaller screens
+    min-height: 569px; // min-height for smaller screens
     overflow-y: hidden; // fixes mysterious space at bottom
     margin-bottom: -@footer-height; // creates sticky footer effect
     @media @x-small {
@@ -265,9 +265,7 @@ body.cover-page {
             padding: 0 17px; // add extra spacing from sides
             position: absolute;
             width: 100%;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%)translateY(-50%);
+            .center(xy);
           }
         }
       }

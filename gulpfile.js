@@ -145,6 +145,7 @@ Dependency Order of Tasks:
 function lessify(source, destination) {
   // cache and instance of the autoprefix less plugin
   var autoprefix = new LessPluginAutoPrefix({
+    remove: false,
     browsers: ["last 3 versions"]
   });
   // cache an instance of less with options

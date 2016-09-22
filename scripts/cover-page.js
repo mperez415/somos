@@ -36,19 +36,53 @@ $(document).ready(function () {
   Utility.loadAllImages();
 
   /*
+   ** Make sure content has margin
+   ** equal to header height
+   ****************************/
+  function contentPadding () {
+    let $content = $('#main-content');
+    let $header = $('.header');
+    let height;
+    let resizetimer;
+
+    function getHeight ($el) {
+      return $el.outerHeight();
+    }
+
+    function setPadding ($target, $el) {
+      height = getHeight($el);
+      $target.css({'padding-top': height});
+      console.log('padding is set to: ' + height);
+    }
+
+    setPadding($content, $header);
+
+    $(window).on('load', function () {
+      setPadding($content, $header);
+    });
+
+    $(window).on('resize', function () { // Resize event subscription. Uses a debounce technique
+      clearTimeout(resizetimer); // clear resizetimer
+      resizetimer = setTimeout(function () { // start new resize timer function
+        setPadding($content, $header);
+      }, 50);
+    });
+  }
+
+  contentPadding();
+
+  /*
    ** Start background Slider
    ****************************/
   $('#background-wrapper').responsiveSlides();
 
-  $(window).on('load', function () {
-    /*
-     ** Show popover link
-     ****************************/
-    $('#popover-link').animate({
-      opacity: 1
-    }, 'slow', function () {
-      // Animation complete.
-    });
+  /*
+   ** Show popover link
+   ****************************/
+  $('#popover-link').animate({
+    opacity: 1
+  }, 'slow', function () {
+    // Animation complete.
   });
 });
 

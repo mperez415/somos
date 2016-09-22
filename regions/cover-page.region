@@ -7,6 +7,8 @@
 
   <!-- include inline critical css -->
   {@|apply critical.block}
+  <!-- include cover page inline css -->
+  {@|apply cover-page.block}
 
   <!-- include system scripts, page meta, and header code injection -->
   {squarespace-headers}

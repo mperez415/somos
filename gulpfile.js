@@ -186,7 +186,7 @@ gulp.task('less:main', ['less:critical'], function() {
  * Compiles critical less into css
  */
 gulp.task('less:critical', function() {
-  return lessify('./styles/critical/critical.less', './styles/critical');
+  return lessify('./styles/critical/*.less', './styles/critical');
 });
 
 /**
@@ -195,7 +195,7 @@ gulp.task('less:critical', function() {
  * into a critical.block file. Depends on the less:critical task to run first.
  */
 gulp.task('critical', ['less:critical'], function() {
-  return gulp.src('./styles/critical/critical.block')
+  return gulp.src('./styles/critical/*.block')
     .pipe(inline({
       base: './',
     }))

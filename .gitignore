@@ -1,7 +1,10 @@
+# Files to ignore
+##############################################
 node_modules
 npm-debug.log
-sftp-config.json
-.sqs-cache
 template/*
 
+# Keep these folders with .gitkeep files
+##############################################
+!blocks/.gitkeep
 !template/.gitkeep

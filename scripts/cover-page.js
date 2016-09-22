@@ -79,10 +79,12 @@ $(document).ready(function () {
   /*
    ** Show popover link
    ****************************/
-  $('#popover-link').animate({
-    opacity: 1
-  }, 'slow', function () {
-    // Animation complete.
+  $(window).on('load', function () {
+    $('#popover-link').animate({
+      opacity: 1
+    }, 'slow', function () {
+      // Animation complete.
+    });
   });
 });
 

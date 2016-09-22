@@ -17,11 +17,9 @@
 @logo-height: 39px;
 @logo-width-sm: 150px;
 @logo-height-sm: 65px;
-@logo-padding: 17px;
-// Header
+@logo-padding: 17px; // Header
 @header-lineheight: @logo-height + 2 * @logo-padding; // equals logo height + 2 * logo padding
-@header-lineheight-sm: @logo-height-sm + 2 * @logo-padding;
-// Footer
+@header-lineheight-sm: @logo-height-sm + 2 * @logo-padding; // Footer
 @footer-height: 82px;
 @footer-height-xs: 66px;
 /* ============================================================
@@ -55,22 +53,22 @@
 /* ============================================================
   Utility Classes
 ============================================================ */
-.cust-button {
+.cust-button,
+a .cust-button {
   display: inline-block;
   width: auto;
   height: auto;
-  padding: .8em 2em;
+  padding: 0.8em 2em;
   border-width: 0;
   cursor: pointer;
   outline: 0;
   background: @brand-black;
+
   &.cta {
     background: @accent;
-    color: @brand-black;
+    color: @brand-black !important;
     text-shadow: none !important;
-    &:hover,
-    &:focus {
-      color: @brand-black !important;
+    &:hover {
       text-decoration: none !important;
     }
   }
@@ -90,7 +88,6 @@
   .no-touch &:hover {
     opacity: 0.8;
   }
-
   @media @small {
     padding: 1em 2.5em;
     font-size: 14px;
@@ -108,11 +105,11 @@ body.cover-page {
     margin: 0;
     padding: 0;
   }
-
   // Reset body styles
   height: 100vh; // set height to 100% of viewport height
   background-color: fade(@brand-black,50%);
   transform: translateZ(1px); // fixes safari z index glitch
+  -webkit-transform: translatez(1px); // fixes safari z index glitch
 
   a,
   h1,
@@ -148,7 +145,6 @@ body.cover-page {
   p a {
     text-decoration: none;
     // Set link hovers
-
     &:visited {
       color: @white;
     }
@@ -171,6 +167,16 @@ body.cover-page {
     right: 0;
     width: 100%;
     z-index: 1;
+    @media @xx-small-only {
+      & > .container {
+        padding: 0;
+
+        > .row {
+          padding: 0;
+
+        }
+      }
+    }
 
     .left {
       width: @logo-width;
@@ -182,6 +188,7 @@ body.cover-page {
     .right {
       width: 100%;
       text-align: right;
+
       .nav-button {
         display: inline-block;
       }
@@ -251,6 +258,9 @@ body.cover-page {
     @media @x-small {
       margin-bottom: -@footer-height-xs;
     }
+    @media @xx-small-only {
+      padding-top: 0 !important;
+    }
 
     > .container {
       height: 100%; // makes container fill up so content can be vertically centered
@@ -289,7 +299,6 @@ body.cover-page {
       text-transform: uppercase;
       letter-spacing: 0.3em;
       font-size: 18px;
-
     }
 
     a,
@@ -386,12 +395,12 @@ body.cover-page {
       background-image: url('/assets/img/plus_swatch.png?v=');
     }
   }
-
   // Wistia popover button
   .wistia_click_to_play {
     a {
       .light-sans;
       text-transform: uppercase;
+
       #popover-link {
         opacity: 0;
       }

@@ -1,0 +1,35 @@
+/* ============================================================
+  TWEAKS
+
+  This is a .less file that is processed by Squarespace.
+  Allows for end-user editable style features located in the
+  'styles' tab in the Squarespace CMS. Also includes usefull
+  enhancements that can only be processed by Squarespace's
+  version of the less compiler.
+============================================================ */
+/* Break grid and stack blocks on small screens
+***************************************************/
+@media screen and (max-width: 480px) {
+  .sqs-block.image-block.sqs-block-image,// fixes image block alignment
+
+  .sqs-block.video-block.sqs-block-video {
+    // fixes video blocks alignment
+    margin-left: 0;
+  }
+  @import 'sqs-grid-breaker';
+}
+/* Beyond mobile
+***************************************************/
+@media screen and (min-width: 48em) {}
+/* Style Editor Tweaks
+
+These tweaks make up your site's style
+editor. For more information on creating
+tweaks, see:
+
+https://developers.squarespace.com/style-editor/
+***************************************************/
+// tweak: { "type" : "font", "title" : "Set to Volkorn", "category" : "Typography", "target" : "body", "loadAllVariants" : true }
+.font {
+  font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+}

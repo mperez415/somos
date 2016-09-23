@@ -35,7 +35,7 @@ gulp.task('default', ['watch']);
 /**
  * Create a build task that does everything
  */
-gulp.task('build', ['regions', 'blocks', 'browserify', 'less']);
+gulp.task('build', ['assets','regions', 'blocks', 'browserify', 'less']);
 
 /************************************************************
 ** WATCH TASK
@@ -43,6 +43,10 @@ gulp.task('build', ['regions', 'blocks', 'browserify', 'less']);
 Watches files for changes and builds template accordingly
 ************************************************************/
 gulp.task('watch', function() {
+  // Watch for changes in assets
+  watch('./assets/**', batch(function(events, done) {
+    gulp.start('assets', done);
+  }));
   // Watch for changes in .region files
   watch('./regions/*.region', batch(function(events, done) {
     gulp.start('regions', done);
@@ -104,6 +108,15 @@ function copy(source, destination) {
   return gulp.src(source)
     .pipe(gulp.dest(destination));
 }
+
+/**
+ * assets
+ * Build asset files
+ * within the template/assets folder.
+ */
+gulp.task('assets', function() {
+  return copy('./assets/**', './template/assets/');
+});
 
 /**
  * blocks

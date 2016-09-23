@@ -25,15 +25,23 @@ import {
  ** ok to load before DOM Ready
  ******************************************/
 MdnzrExtends.init(); // Start modernizer extensions
+// The event subscription that loads images when the page is ready
+document.addEventListener('DOMContentLoaded', Utility.loadAllImages);
+// The event subscription that reloads images on window resize
+window.addEventListener('resize', Utility.loadAllImages);
+/*
+ ** Fade in content
+ ****************************/
+$('body').animate({
+  opacity: 1
+}, 'slow', 'linear', function () {
+  // Animation complete.
+});
 
 /*
  ** jQuery Document Ready
  ******************************************/
 $(document).ready(function () {
-  /*
-   ** Load all Images
-   *****************************/
-  Utility.loadAllImages();
 
   /*
    ** Make sure content has margin
@@ -87,9 +95,3 @@ $(document).ready(function () {
     });
   });
 });
-
-/*
- ** js event subscriptions
- ******************************************/
-// The event subscription that reloads images on window resize
-window.addEventListener('resize', Utility.loadAllImages);

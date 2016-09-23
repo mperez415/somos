@@ -99,6 +99,10 @@ a .cust-button {
   All styles wrapped in cover-page class
 ============================================================ */
 body.cover-page {
+  opacity: 0; // hide by default. shown on page load
+  .no-js & {
+    opacity: 1; // show if no js is present
+  }
   // Reset lists
   ul {
     list-style: none;

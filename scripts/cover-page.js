@@ -29,14 +29,6 @@ MdnzrExtends.init(); // Start modernizer extensions
 document.addEventListener('DOMContentLoaded', Utility.loadAllImages);
 // The event subscription that reloads images on window resize
 window.addEventListener('resize', Utility.loadAllImages);
-/*
- ** Fade in content
- ****************************/
-$('body').animate({
-  opacity: 1
-}, 'slow', 'linear', function () {
-  // Animation complete.
-});
 
 /*
  ** jQuery Document Ready
@@ -83,6 +75,15 @@ $(document).ready(function () {
    ** Start background Slider
    ****************************/
   $('#background-wrapper').responsiveSlides();
+
+  /*
+   ** Fade in content
+   ****************************/
+  $('body').animate({
+    opacity: 1
+  }, 'slow', 'linear', function () {
+    // Animation complete.
+  });
 
   /*
    ** Show popover link

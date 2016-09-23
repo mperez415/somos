@@ -57,7 +57,7 @@
 
 
     <!-- cms content injection point -->
-    <main id="main-content" class="content-container animated fadeIn" role="main" data-content-field="main-content">
+    <main id="main-content" class="content-container" role="main" data-content-field="main-content">
       <div class="container">
         <div class="row">
           <div class="col-xs-12">
